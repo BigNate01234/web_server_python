@@ -31,11 +31,13 @@ class RequestObject():
 
     def parseHeader(self, text):
         lines = text.split("\n")
-        lines[0] = lines[0].replace(" ", "")
-        #print(lines[0])
-        self.method, self.protocol, self.version = lines[0].split("/")
+        print(lines[0])
+        self.method, self.protocol, self.version = lines[0].split(" ")
+        print("method",self.method)
+        print("resource",self.protocol)
+        print("protocol",self.version)
     
-        headerDict = {}
+        self.headerDict = {}
         for field in lines[1:-2]:
             print("Parsing field,",field)
             key, value = field.split(": ")
